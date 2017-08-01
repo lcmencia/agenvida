@@ -20,26 +20,34 @@
 </head>
 <body>
     {% if user.is_authenticated %}
-        <nav class="navbar navbar-fixed-top">
-            <div class="container-fluid">
-                
-                <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+        <div class="page-header">
+               
+                <nav class="navbar navbar-fixed-top">
+                <div class="container-fluid">
                     
-                    <li>
-                    <a href=""  class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="">Cambiar Clave</a></li>
-                        <li class="divider"></li>
-                        <li><a href="{% url "logout" %}">Logout</a></li>
+                    <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="/">Capitalario</a></li>
+                        <li><a href="{% url 'add' %}" class="top-menu"> <span class="glyphicon glyphicon-plus plus"></span></a></li>
+                    </ul>    
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li>
+                        <a href=""  class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}
+                            <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">Cambiar Clave</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{% url "logout" %}">Logout</a></li>
+                        </ul>
+                        </li>
                     </ul>
-                    </li>
-                </ul>
-                
-                </div>
+                    
+                    </div>
             </div>
         </nav>
+        </div>
+        
 
         
        

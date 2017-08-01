@@ -1,6 +1,12 @@
-
+.title{
+	padding-top: 90px;
+}
 .login-container{
     padding-top: 90px;
+}
+.add-button{
+	margin-top: 25px;
+	
 }
 .add{
     padding-top: 90px;
