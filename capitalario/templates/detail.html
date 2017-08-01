@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block head_title %} {{ instance.nombre }} {% endblock head_title%}
+
+    {% block content %}
+    <div class='col-sm-6 col-sm-offset-3'>
+    <h2>{{ instance.nombre }}</h2>
+    <p><a href="{{ instance.get_contribute_url }}"><span class="glyphicon glyphicon-king crown" aria-hidden="true"></span></a>{{ instance.contributions.count }}</p>
+    <p> {{ instance.descripcion }} </p>
+    
+    </div>
+    
+    {% endblock content %}
