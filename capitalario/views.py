@@ -72,10 +72,10 @@ def purpose_add(request):
         instance.save()
         messages.success(request, "Successfully Created")
         return HttpResponseRedirect(instance.get_absolute_url())
-        context = {
-        "form": form,
-        }
-        return render(request,"add.html", context)
+    context = {
+    "form": form,
+    }
+    return render(request,"add.html", context)
    
 
 @login_required()
