@@ -7,6 +7,7 @@ from django.views.generic import RedirectView
 from .models import Purpose
 from .forms import PurposeForm
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 # Create your views here.
 
 
@@ -76,29 +77,34 @@ def purpose_add(request):
     "form": form,
     }
     return render(request,"add.html", context)
-   
+    
 
 @login_required()
 def purpose_edit(request, id=None):
     instance = get_object_or_404(Purpose, id=id)
-    form = PurposeForm(request.POST or None, instance=instance)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-        messages.success(request, "Saved", extra_tags='edit-success')
-        return HttpResponseRedirect(instance.get_absolute_url())
-    context = {
-        "title": instance.nombre,
-        "instance": instance,
-        "form": form,
-    }
-    return render(request,"add.html", context)
-    
+    if instance.user == request.user:
+        form = PurposeForm(request.POST or None, instance=instance)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            messages.success(request, "Saved", extra_tags='edit-success')
+            return HttpResponseRedirect(instance.get_absolute_url())
+        context = {
+            "title": instance.nombre,
+            "instance": instance,
+            "form": form,
+        }
+        return render(request,"add.html", context)
+    else:
+        raise PermissionDenied
 
 @login_required()
 def purpose_delete(request, id=None):
     instance = get_object_or_404(Purpose, id=id)
-    instance.delete()
-    messages.success(request, "Deleted", extra_tags='delete-success')
-    return redirect("list")
+    if instance.user == request.user:
+        instance.delete()
+        messages.success(request, "Deleted", extra_tags='delete-success')
+        return redirect("list")
+    else:
+        raise PermissionDenied
     
