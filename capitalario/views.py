@@ -19,10 +19,10 @@ class PurposeContributeToggle(RedirectView):
         url_ = obj.get_absolute_url()
         user = self.request.user
         if user.is_authenticated():
-            if user in obj.contributions.all():
-                obj.contributions.remove(user)
+            if user in obj.contributors.all():
+                obj.contributors.remove(user)
             else:
-                obj.contributions.add(user)
+                obj.contributors.add(user)
         return url_
 
 

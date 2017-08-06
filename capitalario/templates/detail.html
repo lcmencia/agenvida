@@ -5,7 +5,7 @@
     <div class='col-sm-6 col-sm-offset-3'>
     <h2>{{ instance.nombre }}</h2>
     <p>{{ instance.user }}</p>
-    <p><a href="{{ instance.get_contribute_url }}"><span class="glyphicon glyphicon-king crown" aria-hidden="true"></span></a>{{ instance.contributions.count }}</p>
+    <p><a href="{{ instance.get_contribute_url }}"><span class="glyphicon glyphicon-king crown" aria-hidden="true"></span></a>{{ instance.contributors.count }}</p>
     <p> {{ instance.descripcion }} </p>
     {% if instance.user == request.user %}
         <div class='col-xs-12 col-xs-offset-9 col-sm-12 col-sm-offset-9 '>

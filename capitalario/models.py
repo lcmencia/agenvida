@@ -15,7 +15,7 @@ class Purpose(models.Model):
     fecha_fin = models.DateField(null=True)
     creado = models.DateTimeField(auto_now=False, auto_now_add=True)
     slug = models.SlugField(editable=False)
-    contributions = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='purpose_contribute')
+    contributors = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='purpose_contribute')
 
     def __str__(self):
         return self.nombre

@@ -11,7 +11,7 @@
             <div class="caption">
                 <img src="static/img/capitalario.jpg" alt="..." class="img-responsive img-thumbnail">
                 <h3><a href='{{ obj.get_absolute_url }}'>{{ obj.nombre }}</a> <small>{{ obj.user.get_full_name }}</small></h3>
-                <p><a href="{{ instance.get_contribute_url }}"><span class="glyphicon glyphicon-king crown" aria-hidden="true"></span></a>{{ instance.contributions.count }}</p>
+                <p><a href="{{ instance.get_contribute_url }}"><span class="glyphicon glyphicon-king crown" aria-hidden="true"></span></a>{{ instance.contributors.count }}</p>
                 <p>{{ obj.descripcion|linebreaks|truncatechars:120 }}</p>
                 <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">Ver mas</a></p>
             </div>
