@@ -30,6 +30,9 @@ urlpatterns = [
     url(r'^(?P<id>\d+)/edit/$', views.purpose_edit, name='edit'),
     url(r'^(?P<id>\d+)/delete/$', views.purpose_delete, name='delete'),
     url(r'^(?P<id>\d+)/contribute/$', views.PurposeContributeToggle.as_view(), name='contribute-toggle'),
+    url(r'^password-change/$', views.password_change, name='password_change'),
+    url(r'^password-change-done/$', views.password_change_done, name='password_change_done'),
+    
 ]
 
 if settings.DEBUG:
